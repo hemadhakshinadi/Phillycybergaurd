@@ -1,0 +1,28 @@
+export default function App() {
+  return (
+    <>
+      <header>
+        <nav>
+          <a href="/" className="logo">Philly Cyber Gaurd</a>
+          <div className="nav-links">
+            <a href="#programs">Programs</a>
+            <a href="#facilities">Facilities</a>
+            <a href="#contact">Contact</a>
+          </div>
+        </nav>
+      </header>
+
+      <main>
+        <section className="hero">
+          <div className="hero-box">
+            <h1>Helping Seniors Stay Safe Online</h1>
+            <h2>
+              Providing resources and talks to senior living facilities
+              in the Philadelphia Metro.
+            </h2>
+          </div>
+        </section>
+      </main>
+    </>
+  );
+}
