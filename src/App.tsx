@@ -158,6 +158,9 @@ export default function App() {
               in the Philadelphia Metro.
             </h2>
           </div>
+          <a href="mailto:hemareddy705@gmail.com" className="cta-pill">
+            Get Started <span aria-hidden="true">&rarr;</span>
+          </a>
         </section>
 
         <section className="about">
@@ -277,6 +280,12 @@ export default function App() {
           </div>
         </section>
       </main>
+
+      <footer className="site-footer">
+        <a href="mailto:hemareddy705@gmail.com" className="cta-pill">
+          Get Started <span aria-hidden="true">&rarr;</span>
+        </a>
+      </footer>
     </>
   );
 }

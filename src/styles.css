@@ -125,6 +125,53 @@ a {
   will-change: opacity;
 }
 
+/* ── CTA Pill ── */
+
+.cta-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 20px;
+  border-radius: 999px;
+  background: #1d1d1f;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  transition: background 0.25s ease, transform 0.25s ease;
+  cursor: pointer;
+  border: none;
+}
+
+.cta-pill:hover {
+  background: #333;
+  transform: scale(1.04);
+}
+
+.cta-pill span {
+  font-size: 12px;
+  transition: transform 0.25s ease;
+}
+
+.cta-pill:hover span {
+  transform: translateX(2px);
+}
+
+.hero .cta-pill {
+  margin-top: 24px;
+  opacity: 0;
+  animation: fadeIn 1s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
+}
+
+/* ── Footer ── */
+
+.site-footer {
+  display: flex;
+  justify-content: center;
+  padding: 0 32px 64px;
+}
+
 /* ── Nav ── */
 
 header {
@@ -157,6 +204,7 @@ main {
   min-height: auto;
   padding: 140px 32px 160px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
@@ -510,6 +558,7 @@ main {
     min-height: calc(100svh - 32px);
     padding: 0 24px;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
   }
@@ -554,14 +603,11 @@ main {
     gap: 14px;
   }
 
-  .about-card {
-    padding: 30px 26px;
-    border-radius: 18px;
-  }
-
+  .about-card,
   .about-highlight {
     padding: 30px 26px;
     border-radius: 18px;
+    min-height: 28rem;
   }
 
   .steps {
