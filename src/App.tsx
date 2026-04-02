@@ -1,13 +1,30 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 
 export default function App() {
+  const bgRef = useRef<HTMLDivElement>(null);
+  const gridRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      const fadeDistance = window.innerHeight * 0.75;
+      const opacity = Math.max(0, 1 - scrollY / fadeDistance);
+
+      if (bgRef.current) bgRef.current.style.opacity = String(opacity);
+      if (gridRef.current) gridRef.current.style.opacity = String(opacity);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <>
-      <div className="background-effects">
+      <div className="background-effects" ref={bgRef}>
         <div className="glow glow-1"></div>
         <div className="glow glow-2"></div>
       </div>
-      <div className="grid-bg"></div>
+      <div className="grid-bg" ref={gridRef}></div>
 
       <header>
         <nav>
@@ -60,6 +77,86 @@ export default function App() {
                 Education is the best defence.
               </span>
             </aside>
+          </div>
+        </section>
+
+        <section className="steps">
+          <h2 className="steps-heading">How we help</h2>
+          <p className="steps-subheading">
+            A step-by-step approach to keeping seniors safe in the digital world.
+          </p>
+
+          <div className="steps-list">
+            <div className="step-item">
+              <div className="step-number">1</div>
+              <div className="step-content">
+                <h3>Scam Awareness Training</h3>
+                <p className="step-description">
+                  Teach seniors how to recognize:
+                </p>
+                <ul className="step-bullets">
+                  <li>Phishing emails</li>
+                  <li>Fake tech support scams</li>
+                  <li>Fake government calls</li>
+                  <li>Online shopping scams</li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="step-item">
+              <div className="step-number">2</div>
+              <div className="step-content">
+                <h3>Device Security Setup</h3>
+                <p className="step-description">
+                  Help seniors:
+                </p>
+                <ul className="step-bullets">
+                  <li>Secure smartphones</li>
+                  <li>Install antivirus software</li>
+                  <li>Set strong passwords</li>
+                  <li>Enable two-factor authentication</li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="step-item">
+              <div className="step-number">3</div>
+              <div className="step-content">
+                <h3>Digital Literacy</h3>
+                <p className="step-description">
+                  Teach seniors:
+                </p>
+                <ul className="step-bullets">
+                  <li>How to use email safely</li>
+                  <li>How to browse the internet safely</li>
+                  <li>How to use smartphones and apps</li>
+                  <li>How to avoid suspicious links</li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="step-item">
+              <div className="step-number">4</div>
+              <div className="step-content">
+                <h3>Programs</h3>
+                <ul className="step-bullets">
+                  <li>Free cybersecurity workshops</li>
+                  <li>Senior technology safety seminars</li>
+                  <li>Community awareness events</li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="step-item">
+              <div className="step-number">5</div>
+              <div className="step-content">
+                <h3>Support System</h3>
+                <ul className="step-bullets">
+                  <li>Email help for seniors</li>
+                  <li>Phone support for scam questions</li>
+                </ul>
+              </div>
+            </div>
           </div>
         </section>
       </main>

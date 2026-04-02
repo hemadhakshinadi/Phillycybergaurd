@@ -40,6 +40,7 @@ a {
   z-index: -2;
   overflow: hidden;
   background: linear-gradient(to bottom left, #D0E8FF, #F5F5F7);
+  will-change: opacity;
 }
 
 .glow {
@@ -82,6 +83,7 @@ a {
   mask-image: radial-gradient(circle at center, black 30%, transparent 80%);
   -webkit-mask-image: radial-gradient(circle at center, black 30%, transparent 80%);
   pointer-events: none;
+  will-change: opacity;
 }
 
 @keyframes float {
@@ -312,6 +314,152 @@ main {
   color: rgba(26, 53, 84, 0.42);
 }
 
+/* ── Steps / How we help ── */
+
+.steps {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 0 24px 120px;
+}
+
+.steps-heading {
+  font-family: 'Times New Roman', Times, Georgia, serif;
+  font-size: clamp(28px, 4.5vw, 42px);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+  color: var(--text);
+  margin-bottom: 10px;
+}
+
+.steps-subheading {
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin-bottom: 48px;
+  max-width: 420px;
+}
+
+.steps-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  position: relative;
+}
+
+.steps-list::before {
+  content: '';
+  position: absolute;
+  left: 19px;
+  top: 40px;
+  bottom: 40px;
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.08) 10%,
+    rgba(0, 0, 0, 0.08) 90%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+.step-item {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  padding: 28px 0;
+  position: relative;
+  opacity: 0;
+  transform: translateY(16px);
+  animation: stepReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.step-item:nth-child(1) { animation-delay: 0.1s; }
+.step-item:nth-child(2) { animation-delay: 0.2s; }
+.step-item:nth-child(3) { animation-delay: 0.3s; }
+.step-item:nth-child(4) { animation-delay: 0.4s; }
+.step-item:nth-child(5) { animation-delay: 0.5s; }
+
+@keyframes stepReveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.step-item + .step-item {
+  border-top: 1px solid var(--border);
+}
+
+.step-number {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Times New Roman', Times, Georgia, serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: #1a3554;
+  position: relative;
+  z-index: 1;
+}
+
+.step-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.step-content h3 {
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  margin-bottom: 6px;
+  line-height: 1.4;
+  padding-top: 8px;
+}
+
+.step-description {
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin-bottom: 10px;
+}
+
+.step-bullets {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.step-bullets li {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  font-size: 12.5px;
+  font-weight: 400;
+  color: rgba(29, 29, 31, 0.72);
+  letter-spacing: 0.01em;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.step-bullets li:hover {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
 /* ── Responsive ── */
 
 @media (max-width: 768px) {
@@ -342,6 +490,44 @@ main {
   .about-highlight {
     padding: 24px 22px;
     border-radius: 20px;
+  }
+
+  .steps {
+    padding: 0 20px 80px;
+  }
+
+  .steps-subheading {
+    margin-bottom: 32px;
+  }
+
+  .step-item {
+    gap: 16px;
+    padding: 22px 0;
+  }
+
+  .step-number {
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+    font-size: 16px;
+  }
+
+  .steps-list::before {
+    left: 16px;
+  }
+
+  .step-content h3 {
+    padding-top: 5px;
+    font-size: 15px;
+  }
+
+  .step-bullets {
+    gap: 6px;
+  }
+
+  .step-bullets li {
+    font-size: 12px;
+    padding: 4px 12px;
   }
 
   .glow-1 {
