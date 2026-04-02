@@ -235,6 +235,11 @@ main {
   transform: translateY(24px);
   opacity: 0;
   animation: fadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transition: filter 0.35s ease;
+}
+
+.hero-box:hover {
+  filter: brightness(0.99);
 }
 
 @keyframes fadeUp {
@@ -311,6 +316,11 @@ main {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: #7a8ea8;
+  transition: filter 0.35s ease;
+}
+
+.section-label:hover {
+  filter: brightness(0.99);
 }
 
 /* ── About / Who we are ── */
@@ -341,6 +351,11 @@ main {
   border: 1px solid rgba(255, 255, 255, 0.82);
   backdrop-filter: blur(32px);
   -webkit-backdrop-filter: blur(32px);
+  transition: filter 0.35s ease;
+}
+
+.about-card:hover {
+  filter: brightness(0.99);
 }
 
 .about-card p {
@@ -360,6 +375,11 @@ main {
   border-radius: 22px;
   background: linear-gradient(160deg, #EAF7FF 0%, #BEE6FF 100%);
   border: 1px solid rgba(255, 255, 255, 0.5);
+  transition: filter 0.35s ease;
+}
+
+.about-highlight:hover {
+  filter: brightness(0.99);
 }
 
 .about-highlight::before {
@@ -464,6 +484,11 @@ main {
   align-items: flex-start;
   padding: 34px 0;
   position: relative;
+  transition: filter 0.35s ease;
+}
+
+.step-item:hover {
+  filter: brightness(0.99);
 }
 
 .step-item + .step-item {
