@@ -1,6 +1,14 @@
+import React from 'react';
+
 export default function App() {
   return (
     <>
+      <div className="background-effects">
+        <div className="glow glow-1"></div>
+        <div className="glow glow-2"></div>
+      </div>
+      <div className="grid-bg"></div>
+
       <header>
         <nav>
           <a href="/" className="logo">Philly Cyber Gaurd</a>
