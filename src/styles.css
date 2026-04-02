@@ -21,8 +21,11 @@ html {
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   color: var(--text);
-  background: var(--bg);
-  scroll-behavior: smooth;
+  background: linear-gradient(160deg, #f7f9ff 0%, #f7f5ff 40%, #f6f9ff 100%);
+}
+
+body {
+  background: linear-gradient(160deg, #f7f9ff 0%, #f7f5ff 40%, #f6f9ff 100%);
 }
 
 a {
@@ -39,8 +42,11 @@ a {
   height: 100vh;
   z-index: -2;
   overflow: hidden;
+  --bg-shift: 0px;
   background: linear-gradient(160deg, #eef4ff 0%, #f3f0ff 40%, #edf6ff 100%);
-  will-change: opacity;
+  background-size: 120% 120%;
+  background-position: center calc(50% + var(--bg-shift));
+  will-change: opacity, background-position;
 }
 
 .orb {
@@ -115,14 +121,18 @@ a {
   width: 100vw;
   height: 100vh;
   z-index: -1;
+  --grid-shift: 0px;
   background-image: 
     linear-gradient(to right, rgba(0, 0, 0, 0.035) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(0, 0, 0, 0.035) 1px, transparent 1px);
   background-size: 48px 48px;
+  background-position:
+    0 calc(var(--grid-shift) * 0.35),
+    0 var(--grid-shift);
   mask-image: radial-gradient(circle at center, black 30%, transparent 80%);
   -webkit-mask-image: radial-gradient(circle at center, black 30%, transparent 80%);
   pointer-events: none;
-  will-change: opacity;
+  will-change: opacity, background-position;
 }
 
 /* ── CTA Pill ── */

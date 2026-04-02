@@ -32,8 +32,8 @@ export default function App() {
 
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      duration: 0.8,
+      easing: (t: number) => 1 - Math.pow(1 - t, 3),
       smoothWheel: true,
     });
 
@@ -49,13 +49,24 @@ export default function App() {
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
-      const fadeDistance = window.innerHeight * 0.75;
-      const opacity = Math.max(0, 1 - scrollY / fadeDistance);
+      const fadeDistance = window.innerHeight * 3;
+      const scrollProgress = Math.min(scrollY / fadeDistance, 1);
+      const bgOpacity = 1 - scrollProgress * 0.08;
+      const gridOpacity = 1 - scrollProgress * 0.2;
+      const bgShift = -Math.min(scrollY * 0.045, window.innerHeight * 0.16);
+      const gridShift = -scrollY * 0.12;
 
-      if (bgRef.current) bgRef.current.style.opacity = String(opacity);
-      if (gridRef.current) gridRef.current.style.opacity = String(opacity);
+      if (bgRef.current) {
+        bgRef.current.style.opacity = String(bgOpacity);
+        bgRef.current.style.setProperty('--bg-shift', `${bgShift}px`);
+      }
+      if (gridRef.current) {
+        gridRef.current.style.opacity = String(gridOpacity);
+        gridRef.current.style.setProperty('--grid-shift', `${gridShift}px`);
+      }
     };
 
+    handleScroll();
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
