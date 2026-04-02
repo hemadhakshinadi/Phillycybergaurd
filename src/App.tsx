@@ -32,16 +32,10 @@ export default function App() {
 
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 0.8,
-      easing: (t: number) => 1 - Math.pow(1 - t, 3),
       smoothWheel: true,
+      lerp: 0.14,
+      autoRaf: true,
     });
-
-    function raf(time: number) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
 
     return () => lenis.destroy();
   }, []);
